@@ -26,25 +26,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useCartStore } from '../stores/cart'
+import { ref, onMounted } from 'vue';
+import { useCartStore } from '../stores/cart';
+import { getCategoryDisplayName } from '../utils/categoryMapping';
 
 // pinia cart store
 const cartStore = useCartStore();
 
 const productsByCategory = ref({});
-
-// category mapping
-const categoryMapping = {
-  machine_roller: 'Roller Machines',
-  machine_sorter: 'Sorter Machines',
-  machine_dryer: 'Dryer Machines',
-  machine_die_casting: 'Die Casting Machines'
-}
-
-const getCategoryDisplayName = (category) => {
-  return categoryMapping[category] || category
-}
 
 // load products from products.json
 const loadProducts = async () => {
